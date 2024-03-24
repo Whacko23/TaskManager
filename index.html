@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager with Night Mode</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Task Manager</h1>
+        <button id="toggleTheme">Night Mode: Off</button>
+      </header>
+
+      <!-- Add Task Form -->
+      <form id="addTaskForm">
+        <input type="text" id="taskName" placeholder="Task Name" required />
+        <input type="date" id="dueDate" required />
+        <select id="priority">
+          <option value="High">High</option>
+          <option value="Medium" selected>Medium</option>
+          <option value="Low">Low</option>
+        </select>
+        <select id="category">
+          <option value="Personal">Personal</option>
+          <option value="Work">Work</option>
+          <option value="Other">Other</option>
+        </select>
+        <button class="submit-btn" type="submit">Add Task</button>
+      </form>
+
+      <!-- Task List -->
+
+      <input type="text" id="searchInput" placeholder="Search..." />
+      <select id="tagFilter">
+        <option value="All">All</option>
+        <option value="Personal">Personal</option>
+        <option value="Work">Work</option>
+        <option value="Other">Other</option>
+        <option value="Pending">Pending</option>
+        <option value="Completed">Completed</option>
+      </select>
+
+      <ul id="taskList"></ul>
+
+      <!-- Calendar View -->
+      <div id="calendar"></div>
+    </div>
+
+    <!-- Edit Task Modal -->
+    <div id="editTaskModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modalTitle" class="modal-title">Edit Task</h2>
+        <form id="editTaskForm">
+          <input
+            type="text"
+            id="editTaskName"
+            placeholder="Task Name"
+            required
+          />
+          <input type="date" id="editDueDate" required />
+          <select id="editPriority">
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+          <select id="editCategory">
+            <option value="Personal">Personal</option>
+            <option value="Work">Work</option>
+            <option value="Other">Other</option>
+          </select>
+          <select id="editStatus">
+            <option value="Pending">Pending</option>
+            <option value="Completed">Completed</option>
+          </select>
+          <button type="submit">Update Task</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
