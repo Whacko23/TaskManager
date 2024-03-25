@@ -6,15 +6,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const tagFilter = document.getElementById('tagFilter');
   let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
+  const applyNightMode = () => {
+    const body = document.body;
+    if (localStorage.getItem('nightMode') === 'true') {
+      body.setAttribute('data-theme', 'dark');
+      toggleThemeButton.textContent = 'Night Mode: On';
+    } else {
+      body.removeAttribute('data-theme');
+      toggleThemeButton.textContent = 'Night Mode: Off';
+    }
+  };
+
+  applyNightMode();
+
   toggleThemeButton.addEventListener('click', () => {
     const body = document.body;
     if (body.getAttribute('data-theme') === 'dark') {
-      body.removeAttribute('data-theme');
-      toggleThemeButton.textContent = 'Night Mode: Off';
+      localStorage.setItem('nightMode', 'false');
     } else {
-      body.setAttribute('data-theme', 'dark');
-      toggleThemeButton.textContent = 'Night Mode: On';
+      localStorage.setItem('nightMode', 'true');
     }
+    applyNightMode();
   });
 
   const updateLocalStorage = () => {
