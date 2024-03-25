@@ -44,6 +44,7 @@ select {
   --medium-priority-text: #856404;
   --low-priority-bg: #d4edda;
   --low-priority-text: #155724;
+  --completed-task-color: #aaa;
 }
 
 [data-theme="dark"] {
@@ -138,6 +139,10 @@ ul li:hover {
   background-color: var(--hover-color);
   color: var(--hover-text-color);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+ul li.completed {
+  color: var(--completed-task-color);
 }
 
 .modal {
