@@ -106,6 +106,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  window.completeTask = (index) => {
+    tasks[index].status = 'Completed';
+    updateLocalStorage();
+
+    const selectedTag = tagFilter.value;
+    if (selectedTag === 'All') {
+      displayTasks();
+    } else if (selectedTag === 'Completed') {
+      const completedTasks = tasks.filter(task => task.status === 'Completed');
+      displayTasks(completedTasks);
+    } else if (selectedTag === 'Pending') {
+      const pendingTasks = tasks.filter(task => task.status === 'Pending');
+      displayTasks(pendingTasks);
+    } else {
+      const filteredTasks = tasks.filter(task => task.category === selectedTag);
+      displayTasks(filteredTasks);
+    }
+  };
+
   searchInput.addEventListener('input', () => {
     const searchTerm = searchInput.value.toLowerCase();
     const filteredTasks = tasks.filter(task =>
@@ -129,12 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
       displayTasks(filteredTasks);
     }
   });
-
-  window.completeTask = (index) => {
-    tasks[index].status = 'Completed';
-    updateLocalStorage();
-    displayTasks();
-  };
 
   displayTasks();
 });
